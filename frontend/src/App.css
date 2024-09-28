@@ -1,0 +1,63 @@
+:root {
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: rgb(191, 104, 10);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  padding: 1rem;
+}
+
+.App-header h1 {
+  color: white;
+}
+
+.chatBtn {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.btnInnerText {
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  -webkit-transform: translateY(-0.2em);
+  -ms-transform: translateY(-0.2em);
+  transform: translateY(-0.2em);
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
+}
+
+.chatBtn:hover .btnInnerText {
+  -webkit-transform: translateY(-0.33em);
+  -ms-transform: translateY(-0.33em);
+  transform: translateY(-0.33em);
+}
+
+.chatBtn:active .btnInnerText {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}

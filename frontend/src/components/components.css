@@ -1,0 +1,18 @@
+.membersContainer {
+  width: 30%;
+}
+
+.chatContainer {
+  width: 70%;
+}
+
+form {
+  display: flex;
+}
+
+.textInputContainer {
+  display: flex;
+}
+
+.messagesList {
+}
