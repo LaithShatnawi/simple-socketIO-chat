@@ -12,10 +12,10 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [messagesList, setMessagesList] = useState([]);
 
-  console.log(messagesList);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //send messages in a room
     socket.emit('send-message-client', {
       message,
       id: socket.id,
@@ -23,6 +23,7 @@ const Chat = () => {
 
     //reset input
     e.target[0].value = '';
+    setMessage('');
   };
 
   socket.on('send-message-server', ({ message, id }) => {
@@ -39,6 +40,11 @@ const Chat = () => {
 
   const handleChange = (e) => {
     setMessage(e.target.value);
+  };
+
+  const handleMemberClick = (e) => {
+    //join room
+    socket.emit('join-room', '123');
   };
 
   useEffect(() => {
@@ -66,11 +72,12 @@ const Chat = () => {
       <form onSubmit={handleSubmit}>
         {/* members list */}
         <div className='membersContainer'>
-          <MembersList />
+          <MembersList onClick={handleMemberClick} />
         </div>
 
         <div className='chatContainer'>
           {/* messages list */}
+          <div className='shade'></div>
           <div className='messagesList'>
             <MessageList
               className='message-list'
@@ -84,7 +91,6 @@ const Chat = () => {
           <div className='textInputContainer'>
             <Input
               placeholder='Type here...'
-              multiline={true}
               type='text'
               onChange={handleChange}
               rightButtons={

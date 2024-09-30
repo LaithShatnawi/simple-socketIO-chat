@@ -1,10 +1,11 @@
 import React from 'react';
 import { ChatList } from 'react-chat-elements';
 
-const MembersList = () => {
+const MembersList = ({ onClick }) => {
   return (
     <ChatList
       className='chat-list'
+      onClick={(e) => onClick(e)}
       dataSource={[
         {
           avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',

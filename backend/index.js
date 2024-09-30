@@ -1,7 +1,8 @@
 import express from 'express';
 import { createServer } from 'node:http';
 import cors from 'cors';
-import { chat } from './src/chat.js';
+import sequelize from './src/services/db.js';
+import { chat } from './src/services/chat.js';
 
 const app = express();
 const server = createServer(app);
@@ -23,6 +24,14 @@ app.get('/', (req, res) => {
 //chat
 chat(server);
 
-server.listen(port, () => {
-  console.log(`server is running at: http://localhost:${port}`);
-});
+sequelize
+  .sync()
+  .then(() => {
+    console.log('database connected successfully');
+    server.listen(port, () => {
+      console.log(`server is running at: http://localhost:${port}`);
+    });
+  })
+  .catch((e) => {
+    console.log('error connecting database');
+  });

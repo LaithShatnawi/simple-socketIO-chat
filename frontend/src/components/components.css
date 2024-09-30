@@ -4,14 +4,31 @@
 
 .chatContainer {
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-image: url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  position: relative;
+}
+.shade {
+  width: 100%;
+  height: calc(100% - 3rem);
+  background-color: black;
+  opacity: 50%;
+  top: 0;
+  position: absolute;
 }
 
 form {
   display: flex;
+  gap: 1rem;
+  height: 100%;
 }
 
 .textInputContainer {
   display: flex;
+  height: 3rem;
 }
 
 .messagesList {
